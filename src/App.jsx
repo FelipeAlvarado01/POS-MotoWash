@@ -1,14 +1,41 @@
 import "./App.css";
 import { TwitterFollowCard } from "./TwitterFollowCard.jsx";
 
+const users = [
+  {
+    userName: "midudev",
+    name: "Miguel Ángel Durán",
+    isFollowing: true,
+  },
+  {
+    userName: "pheralb",
+    name: "Pablo H.",
+    isFollowing: false,
+  },
+  {
+    userName: "PacoHdezs",
+    name: "Paco Hdez",
+    isFollowing: true,
+  },
+  {
+    userName: "TMChein",
+    name: "Tomas",
+    isFollowing: false,
+  },
+];
+
 function App() {
   return (
     <section className="App">
-      <TwitterFollowCard userName="felipealvarado01">
-        Felipe Alvarado
-      </TwitterFollowCard>
-
-      <TwitterFollowCard userName="midudev">Jose Benito</TwitterFollowCard>
+      {users.map(({ userName, name, isFollowing }) => (
+        <TwitterFollowCard
+          key={userName}
+          userName={userName}
+          initialIsFollowing={isFollowing}
+        >
+          {name}
+        </TwitterFollowCard>
+      ))}
     </section>
   );
 }
